@@ -1,0 +1,5 @@
+hello.c (pré-processamento) === gcc -E hello.c -o hello.i ===>
+hello.i (compilação) === gcc -S hello.i ===>
+hello.s (montagem) === gcc -c hello.s ===>
+hello.o (ligação) === gcc hello.o -o hello ===>
+hello
