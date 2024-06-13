@@ -19,8 +19,11 @@ sum:
 	movl s, %eax
 
 loop:
+	# while (i < 4) {
 	cmpl $4, %r8d
 	jge end_loop
+
+	// nums[i] = &nums + (i * sizeOf(int))
 
 	# r9 = &nums
 	movq $nums, %r9
