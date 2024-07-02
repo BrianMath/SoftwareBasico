@@ -39,8 +39,8 @@ while:
 
 	# value = vet[i]
 	# &vet + i * 2 -> value
-	movslq %r13d, %r15
-	movw (%rdi, %r15, 2), %r12w
+	movslq %r13d, %rax
+	movw (%rdi, %rax, 2), %r12w
 
 	# _if (*max < value)
 	cmpw %r12w, (%rcx)
@@ -52,12 +52,12 @@ while:
 end_if1:
 
 	// sum = (long)(*max * (short)factor)
-	movw %dx, %r9w		# %r8w = (short)factor
-	imulw (%rcx), %r9w  # %r8w = *max * %r8w
-	movswq %r9w, %r14	# sum = (long)%r8w
+	movw %dx, %r9w		# %r9w = (short)factor
+	imulw (%rcx), %r9w  # %r9w = *max * %r9w
+	movswq %r9w, %r14	# sum = (long)%r9w
 
 	// Salvar valores amarelos (pegar memória)
-	movq %rdi, -32(%rbp)  # short *data
+	movq %rdi, -32(%rbp) # short *data
 	movq %rsi, -40(%rbp) # int size
 	movq %rdx, -48(%rbp) # int factor
 	movq %rcx, -56(%rbp) # short *max
