@@ -84,7 +84,7 @@ divisao:
 
 	movb %r8b, %al
 	cbtw # Estende o sinal de %al (byte) para %ax (word)
-	idiv %r9b
+	idivb %r9b
 	movb %al, byte_quociente
 	movb %ah, byte_resto
 
@@ -130,8 +130,8 @@ divisao:
 	movb $11, %r8b
 	movb $2, %r9b
 
-	movzbw %r8b, %ax # Estende o dividendo (1-byte) com zeros para o dobro do tamanho (%ax: 2-bytes) 
-	idivb %r9b
+	movzbw %r8b, %ax	# Estende o dividendo (1 byte) com zeros para o dobro do tamanho (%ax: 2 bytes) 
+	divb %r9b
 	movb %al, byte_quociente_un
 	movb %ah, byte_resto_un
 
@@ -140,9 +140,9 @@ divisao:
 	movw $23, %r8w
 	movw $5, %r9w
 
-	movw %r8w, %ax 	# Move o dividendo para a metade menos significativa
-	movw $0, %dx 	# E zera a metade mais significativa da dupla de registradores DX:AX (doubleword)
-	idivw %r9w
+	movw %r8w, %ax		# Move o dividendo para a metade menos significativa
+	movw $0, %dx		# E zera a metade mais significativa da dupla de registradores DX:AX (doubleword)
+	divw %r9w
 	movw %ax, word_quociente_un
 	movw %dx, word_resto_un
 
@@ -151,9 +151,9 @@ divisao:
 	movl $35, %r8d
 	movl $7, %r9d
 
-	movl %r8d, %eax # Move o dividendo para a metade menos significativa
-	movl $0, %edx 	# E zera a metade mais significativa da dupla de registradores EDX:EAX (quadword)
-	idivl %r9d
+	movl %r8d, %eax		# Move o dividendo para a metade menos significativa
+	movl $0, %edx		# E zera a metade mais significativa da dupla de registradores EDX:EAX (quadword)
+	divl %r9d
 	movl %eax, long_quociente_un
 	movl %edx, long_resto_un
 
@@ -162,9 +162,9 @@ divisao:
 	movq $29, %r8
 	movq $9, %r9
 
-	movq %r8, %rax 	# Move o dividendo para a metade menos significativa
-	movq $0, %rdx 	# E zera a metade mais significativa da dupla de registradores RDX:RAX (octoword)
-	idivq %r9
+	movq %r8, %rax		# Move o dividendo para a metade menos significativa
+	movq $0, %rdx		# E zera a metade mais significativa da dupla de registradores RDX:RAX (octoword)
+	divq %r9
 	movq %rax, quad_quociente_un
 	movq %rdx, quad_resto_un
 
